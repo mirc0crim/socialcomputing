@@ -81,6 +81,7 @@ a > p:hover {
 	position: relative;
 	float: right;
 	width: 79%;
+	min-height: 400px;
 	background-color: #F4EBC3;
 	margin-bottom: 10px;
 }

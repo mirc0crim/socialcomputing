@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<title>My Page</title>
+	</head>
+	<body>
+		<div id="header">
+			<a href="/index.html"><p id="name">Project Social Computing</p></a>
+		</div>
+		<div class="left">
+		</div>
+		<div class="right">
+			<?php
+				if ($_GET["action"] == login){
+					echo "<h4>Welcome ", $_POST["username"], "</h4>";
+					// Check for username and password in database
+					setcookie("username", $_POST["username"]);
+					header("refresh:2; url=index.html");
+				} else if ($_GET["action"] == register) {
+					echo "<h4>Welcome ", $_POST["username"], "</h4>";
+					// Ener username and password in database
+					setcookie("username", $_POST["username"]);
+					header("refresh:2; url=index.html");
+				} else if ($_GET["action"] == logout) {
+					echo "<h4>See You</h4>";
+					setcookie("username", "", time() - 3600);
+					header("refresh:2; url=index.html");
+				}
+			?>
+		</div>
+		<?php include('footer.php') ?>
+	</body>
+</html>

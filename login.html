@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<title>Login</title>
+	</head>
+	<body>
+		<div id="header">
+			<a href="/index.html"><p id="name">Project Social Computing</p></a>
+		</div>
+		<div class="left">
+		</div>
+		<div class="right">
+			<h4>Please log in</h4>
+			<form name="login" action="redirector.html?action=login" method="post">
+				<table>
+				<tr>
+					<td>Username:</td><td><input type="text" name="username"></td>
+				</tr>
+				<tr>
+					<td>Password:</td><td><input type="password" name="pwd"></td>
+				</tr>
+				<tr>
+					<td></td><td><input type="submit" value="Submit"></td>
+				</tr>
+				</table>
+			</form>
+			<h4>or Sign Up here</h4>
+			<form name="register" action="redirector.html?action=register" method="post">
+				<table>
+				<tr>
+					<td>Username:</td><td><input type="text" name="username"></td>
+				</tr>
+				<tr>
+					<td>Password:</td><td><input type="password" name="pwd"></td>
+				</tr>
+				<tr>
+					<td>Password:</td><td><input type="password" name="pwd2"></td>
+				</tr>
+				<tr>
+					<td></td><td><input type="submit" value="Submit"></td>
+				</tr>
+				</table>
+			</form>
+		</div>
+		<?php include('footer.php') ?>
+	</body>
+</html>

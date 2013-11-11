@@ -6,8 +6,14 @@
 	</head>
 	<body>
 		<div id="header">
-			<p id="name">Project Social Computing</p>
-			<a href="/useraccount.html"><p id="useraccount">User Account</p></a>
+			<a href="/index.html"><p id="name">Project Social Computing</p></a>
+			<?php
+				if (strlen($_COOKIE["username"])>1) {
+					echo "<a href=\"/useraccount.html\"><p id=\"useraccount\">User Account</p></a>";
+				} else {
+					echo "<a href=\"/login.html\"><p id=\"useraccount\">Log In</p></a>";
+				}
+			?>
 		</div>
 		<div class="left">
 			<h4>Open Accepted Jobs:</h4>

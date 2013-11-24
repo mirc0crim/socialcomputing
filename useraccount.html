@@ -17,14 +17,25 @@
 		<div class="right">
 			<h4>My Name</h4>
 			<p>Something about me maybe.</p>
-			<h4>Experience</h4>
-			<ul>
-				<li>Award for best senior thesis</li>
-				<li>Creator of this great Social Computing Project</li>
-			</ul>
+			<h4>Country</h4>
+			<p>Switzerland</p>
+			<h4>Languages</h4>
+			<p>French, English</p>
+			
 			<h4>User Statistics</h4>
 			<p>Jobs completed: 45</p>
 			<p>Average Rating: 4.81</p>
+			
+			<button onclick ="/EditProfile.html">Edit</button>
+			
+			<button id="myButton" class="float-left submit-button" >Edit</button>
+
+<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = "/EditProfile.html";
+    };
+</script>
+			
 		</div>
 		<?php include('footer.php') ?>
 	</body>

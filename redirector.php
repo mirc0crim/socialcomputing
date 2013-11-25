@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE html><br />
+<?php echo "welcome"; ?>
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
@@ -13,10 +14,11 @@
 		<div class="right">
 			<?php
 					include('info.php');
-				
+					echo "<p>trying to connect now...</p>";
+			
 					mysql_connect("mysql.serversfree.com", $userName, $password) or die(mysql_error());
 					mysql_select_db($dbName) or die(mysql_error());
-					
+					echo "Hello am I reaching heer?";
 				if ($_GET["action"] == login){
 					$strSQL = "SELECT pw FROM users WHERE name=\"" . $_POST["username"] . "\"";
 					$rs = mysql_query($strSQL);
@@ -32,7 +34,7 @@
 				} 
 				
 				else if ($_GET["action"] == register) {
-					
+					echo "KAM ", $_POST["pwd"];
 					if ($_POST["pwd"] == $_POST["pwd2"]) {
 						$strSQL = "SELECT * FROM users WHERE name=\"" . $_POST["username"] . "\"";
 						$rs = mysql_query($strSQL);

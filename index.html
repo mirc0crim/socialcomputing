@@ -5,49 +5,30 @@
 		<title>My Page</title>
 	</head>
 	<body>
+		<a href="/login.html">Login</a>
 		<div id="header">
-			<a href="/index.html"><p id="name">Project Social Computing</p></a>
-			<?php
-				if (strlen($_COOKIE["username"])>1) {
-					echo "<a href=\"/useraccount.html\"><p id=\"useraccount\">User Account</p></a>";
-				} else {
-					echo "<a href=\"/login.html\"><p id=\"useraccount\">Log In</p></a>";
-				}
-			?>
+			<p id="name">Project Social Computing</p>
+			<a href="/useraccount.html"><p id="useraccount">User Account</p></a>
 		</div>
 		<div class="left">
-			<h4>Open Accepted Jobs:</h4>
-			<a href="/task.php?jobid=22"><p>Job 22</p></a>
-			<a href="/task.php?jobid=7"><p>Job 7</p></a>
+			<h4>Quick Links</h4>
+			<a href="/TestAccent.html"><p>Test your Accent</p></a>
+			<a href="/Rate.html"><p>Rate Recordings</p></a>
+			<a href="/Lessons.html"><p>Lessons</p></a>
 		</div>
 		<div class="right">
-			<h4>Jobs available:</h4>
-			<a href="/task.php?jobid=1"><div class="jobentry">
-				<p>Job 1</p>
-				<p>Description of first task</p>
-				<p>$4.00</p>
-			</div></a>
-			<a href="/task.php?jobid=25"><div class="jobentry">
-				<p>Job 25</p>
-				<p>Short description of another task</p>
-				<p>$2.50</p>
-			</div></a>
-			<a href="/task.php?jobid=43"><div class="jobentry">
-				<p>Job 43</p>
-				<p>Description of yet another task</p>
-				<p>$10.00</p>
-			</div></a>
-			<a href="/task.php?jobid=42"><div class="jobentry">
-				<p>Job 42</p>
-				<p>Answer to the Ultimate Question of Life, the Universe, and Everything</p>
-				<p>$1.00</p>
-			</div></a>
-			<a href="/task.php?jobid=7"><div class="jobentry">
-				<p>Job 5</p>
-				<p>Description of fifth task</p>
-				<p>$7.00</p>
-			</div></a>
+			<p><img src="/image" width="120" height="150"> </p>
+				<p> Welcome to XYZ. We aim to provide you with training material and tests to help improve yor accent.</p>
+				<p>  In the section on lessons we provide you with the basic training material and lesson plans to get you kick started. 
+					In the section on recording you can rate the recordings of other users and for a small pay. Finally, you can submit your own recordings in the section on Test your Accents. You will ideally recieve scores within a period of two days.
+					</p>
+					<p>You will be happy to know that the material generated through your recordings is used to actively create podcasts for the blind in our society! We thank you beforehand for your interest and partcipation to this noble cause! </p>
+					
+					<p>Happy Learning!</p>
 		</div>
-		<?php include('footer.php') ?>
+		
+		<?php 
+		include('footer.php') 
+		?>
 	</body>
 </html>

@@ -20,7 +20,6 @@ div {
 #name {
 	float:left;
 	margin-left: 15px;
-	padding-top: 5px;
 	font-size: 16px;
 	font-family: Verdana, sans-serif;
 	color: #ffffff;
@@ -29,7 +28,6 @@ div {
 #useraccount {
 	float: right;
 	margin-right: 15px;
-	padding-top: 5px;
 	font-size: 16px;
 	font-family: Verdana, sans-serif;
 	color: #ffffff;
@@ -39,7 +37,7 @@ div {
 	color: #6abbFF;
 }
 
-h4 {
+h4, .title {
 	margin-left: 10px;
 	margin-bottom: 15px;
 	font-family: Verdana, sans-serif;
@@ -50,7 +48,7 @@ h1 {
 	font-family: Verdana, sans-serif;
 }
 
-.right p {
+.right p, .text {
 	font-family: Garamond, serif;
 	color: #000000;
 	margin-left: 10px;
@@ -86,6 +84,7 @@ a > p:hover {
 	position: relative;
 	float: right;
 	width: 79%;
+	height:200px;
 	background-color: #F4EBC3;
 	margin-bottom: 10px;
 }
@@ -137,4 +136,18 @@ a > p:hover {
 	z-index:1;
 	top:338px!important;
 }
+
+.levelbutton {
+	text-align:center;
+	padding:10px;
 }
+
+button {
+	height:35px;
+	width:200px;
+	background-color: #011893;
+	color:#FFFFFF;
+	border-radius: 10px;
+}
+
+

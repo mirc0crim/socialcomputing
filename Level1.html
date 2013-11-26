@@ -16,9 +16,10 @@
 			<a href="/Lessons.html"><p>Lessons</p></a>
 		</div>
 		<div class="right">
-			<div class="levelbutton"><button type="button" onclick = "location.href='Level1.html'">Level 1</button></div>
-			<div class="levelbutton"><button type="button" onclick = "location.href='Level2.html'">Level 2</button></div>
-			<div class="levelbutton"><button type="button" onclick = "location.href='Level3.html'">Level 3</button></div> 
+			<?php
+				include 'db/dbconnect.php';
+				echo getLevelStories(1);
+			?>
 		</div>
 		<?php 
 		include('footer.php') 

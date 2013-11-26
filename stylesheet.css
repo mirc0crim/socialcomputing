@@ -115,16 +115,15 @@ a > p:hover {
 }
 
 #footer {
-	position: relative;
-	height: 50px;
-	background-color: #011893;
-	clear: both;
-	font-family: Verdana, sans-serif;
-	font-size: 14px;
-	color: #FFFFFF;
+        position: relative;
+        height: 50px;
+        background-color: #011893;
+        clear: both;
+        font-family: Verdana, sans-serif;
+        font-size: 14px;
+        color: #FFFFFF;
 }
 
-#footer p {
-	position: relative;
-	padding-top 15px;
+#footer p:hover {
+	color: #6abbFF;
 }

@@ -5,16 +5,17 @@
 		<title>My Page</title>
 	</head>
 	<body>
-		<div id="header">
-			<a href="/index.html"><p id="name">Project Social Computing</p></a>
-		</div>
+		<?php
+			$pageName = "Project Social Computing - Redirecting";
+			include('header.php');
+		?>
 		<div class="left">
 		</div>
 		<div class="right">
 			<?php
 					include('info.php');
 				
-					mysql_connect("mysql.serversfree.com", $userName, $password) or die(mysql_error());
+					mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
 					mysql_select_db($dbName) or die(mysql_error());
 					
 				if ($_GET["action"] == login){
@@ -29,9 +30,7 @@
 						echo "<h4>Wrong username/password</h4>";
 						header("refresh:2; url=login.html");
 					}
-				} 
-				
-				else if ($_GET["action"] == register) {
+				} else if ($_GET["action"] == register) {
 					
 					if ($_POST["pwd"] == $_POST["pwd2"]) {
 						$strSQL = "SELECT * FROM users WHERE name=\"" . $_POST["username"] . "\"";

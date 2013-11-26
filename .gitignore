@@ -1,3 +1,4 @@
 *.project
 /.metadata
 info.php
+default.php

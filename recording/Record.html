@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>Recorder Example</title>
-		<link rel="stylesheet" type="text/css" href="example.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheet.css" />
 	</head>
 	<body>
 		<script type="text/javascript" src="recorder.js"></script>
@@ -75,23 +75,37 @@
 			}
 		</script>
 
-		<div id="wrapper">
+		
+		<?php 
+			$pageName = "Project Social Computing - Record";
+			include('../header.php'); 
+		?>
+		<div class="left">
+			<h4>Quick Links</h4>
+			<a href="/TestAccent.html"><p>Test your Accent</p></a>
+			<a href="/Rate.html"><p>Rate Recordings</p></a>
+			<a href="/Lessons.html"><p>Lessons</p></a>
+		</div>
+		<div class="right" style="height:450px;">
+			<div id="wrapper">
 			<h1><a href="https://github.com/jwagener/recorder.js">Recorder Example</a></h1>
 			<p>
 				This is a very basic example for the Recorder.js.
 				Checkout <a href="https://github.com/jwagener/recorder.js">GitHub</a> for details and have a look at the source for this file.
 				Start by clicking record:
 			</p>
-			<div>				
+			<div style="text-align:center;">				
 				<a href="javascript:record()" id="record" ><img src="../img/Record.gif"/></a>
 				<a href="javascript:play()" id="play" ><img src="../img/Play.gif"/></a>
 				<a href="javascript:stop()" id="stop" ><img src="../img/Stop.gif"/></a>
 				<a href="javascript:upload('newtest')" id="upload" ><img src="../img/Submit.gif"/></a>
 			</div>
 
-			<span id="recording" style="visibility: hidden">Recording ... </span></br>
-			<span id="uploading" style="visibility: hidden">Uploading ... </span></br>
-			<span id="time">0:00</span>
+			<div id="recording" style="visibility: hidden; text-align:center;">Recording ... </div>
+			<div id="uploading" style="visibility: hidden; text-align:center;">Uploading ... </div>
+			<div id="time" style="text-align:center;">0:00</div>
 		</div>
+		</div>
+		<?php include('../footer.php') ?>
 	</body>
 </html>

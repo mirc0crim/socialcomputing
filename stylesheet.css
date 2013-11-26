@@ -1,4 +1,4 @@
-﻿body {
+body {
 	width: 980px;
 	margin-left: auto;
 	margin-right: auto;
@@ -40,15 +40,20 @@ div {
 }
 
 h4 {
-	margin-left: 5px;
+	margin-left: 10px;
 	margin-bottom: 15px;
+	font-family: Verdana, sans-serif;
+}
+
+h1 {
+	margin: 10px;
 	font-family: Verdana, sans-serif;
 }
 
 .right p {
 	font-family: Garamond, serif;
 	color: #000000;
-	margin-left: 5px;
+	margin-left: 10px;
 }
 
 li {
@@ -65,8 +70,8 @@ li {
 }
 
 .left p {
-	color: black;
-	margin: 5px;
+	color: #575A6D;
+	margin: 10px;
 }
 
 a {
@@ -126,4 +131,10 @@ a > p:hover {
 
 #footer p:hover {
 	color: #6abbFF;
+}
+
+#recorderFlashContainer {
+	z-index:1;
+	top:338px!important;
+}
 }

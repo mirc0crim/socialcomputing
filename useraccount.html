@@ -12,7 +12,19 @@
 		<div class="left">
 		</div>
 		<div class="right">
-			<h4>My Name</h4>
+			<?php
+				include('info.php');
+			
+				mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
+				mysql_select_db($dbName) or die(mysql_error());
+				$strSQL = "SELECT fname, lname FROM users WHERE name=\"" . $_COOKIE["username"] . "\"";
+				$rs = mysql_query($strSQL);
+				$row = mysql_fetch_array($rs);
+				$fname = $row["fname"];
+				$lname = $row["lname"];
+				mysql_close();
+				echo "<h4>" . $fname . " " . $lname . "</h4>";
+			?>
 			<p>Something about me maybe.</p>
 			<h4>Country</h4>
 			<p>Switzerland</p>
@@ -23,10 +35,7 @@
 			<p>Jobs completed: 45</p>
 			<p>Average Rating: 4.81</p>
 			
-			<button onclick ="/EditProfile.html">Edit</button>
-			
 			<button onclick = "location.href= 'EditProfile.html' "> Edit </button> 
-
 			
 		</div>
 		<?php include('footer.php') ?>

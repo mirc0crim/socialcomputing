@@ -54,6 +54,13 @@
 					echo "<h4>See You</h4>";
 					setcookie("username", "", time() - 3600);
 					header("refresh:2; url=index.html");
+				} else if ($_GET["action"] == editName) {
+					$strSQL = "UPDATE users SET fname = \"" . $_POST["fname"] . "\" WHERE name = \"" . $_COOKIE["username"] . "\"";
+					mysql_query($strSQL);
+					$strSQL = "UPDATE users SET lname = \"" . $_POST["lname"] . "\" WHERE name = \"" . $_COOKIE["username"] . "\"";
+					mysql_query($strSQL);
+					echo "<h4>Profile Updated</h4>";
+					header("refresh:2; url=useraccount.html");
 				}
 				
 				mysql_close();

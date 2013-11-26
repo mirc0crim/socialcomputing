@@ -1,24 +1,32 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-<head>
+<!DOCTYPE html>
+<html>
+	<head>
 		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
-		<title>My Page</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>EditProfile</title>
-	<meta name="author" content="Kamakshi Sharma Jedele" />
-	<!-- Date: 2013-11-18 -->
-</head>
-<body>
-
-
-<form action="demo_form.asp" method="get">
-First name: <input type="text" name="fname"><br>
-Last name: <input type="text" name="lname"><br>
-<button type="submit">Submit</button><br>
-<button type="submit" formaction="demo_admin.asp">Submit as admin</button>
-</form>
-</body>
+		<title>Edit Profile</title>
+	</head>
+	<body>
+		<?php
+			$pageName = "Project Social Computing - Edit Profile";
+			include('header.php');
+		?>
+		<div class="left">
+		</div>
+		<div class="right">
+			<h4>Set your Name</h4>
+			<form name="editProfile" action="redirector.html?action=editName" method="post">
+				<table>
+				<tr>
+					<td>First Name:</td><td><input type="text" name="fname"></td>
+				</tr>
+				<tr>
+					<td>Last Name:</td><td><input type="text" name="lname"></td>
+				</tr>
+				<tr>
+					<td> </td><td><input type="submit" value="Submit"></td>
+				</tr>
+				</table>
+			</form>
+		</div>
+		<?php include('footer.php') ?>
+	</body>
 </html>
-

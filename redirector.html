@@ -31,7 +31,6 @@
 						header("refresh:2; url=login.html");
 					}
 				} else if ($_GET["action"] == register) {
-					
 					if ($_POST["pwd"] == $_POST["pwd2"]) {
 						$strSQL = "SELECT * FROM users WHERE name=\"" . $_POST["username"] . "\"";
 						$rs = mysql_query($strSQL);
@@ -40,6 +39,8 @@
 							echo "<h4>Welcome ", $_POST["username"], "</h4>";
 							$strSQL = "INSERT INTO users(name,pw) VALUES(\"" . $_POST["username"] . "\",\"" . $_POST["pwd"] . "\")";
 							mysql_query($strSQL) or die(mysql_error());
+							$strSQL = "UPDATE users SET fname=\"First Name\",lname=\"Last Name\",aboutme=\"Say something about you.\",country=\"Enter your country\",languages=\"English\"  WHERE name = \"" . $_POST["username"] . "\"";
+							mysql_query($strSQL);
 							setcookie("username", $_POST["username"]);
 							header("refresh:2; url=index.html");
 						} else {
@@ -54,10 +55,16 @@
 					echo "<h4>See You</h4>";
 					setcookie("username", "", time() - 3600);
 					header("refresh:2; url=index.html");
-				} else if ($_GET["action"] == editName) {
+				} else if ($_GET["action"] == editProfile) {
 					$strSQL = "UPDATE users SET fname = \"" . $_POST["fname"] . "\" WHERE name = \"" . $_COOKIE["username"] . "\"";
 					mysql_query($strSQL);
 					$strSQL = "UPDATE users SET lname = \"" . $_POST["lname"] . "\" WHERE name = \"" . $_COOKIE["username"] . "\"";
+					mysql_query($strSQL);
+					$strSQL = "UPDATE users SET aboutme = \"" . $_POST["aboutme"] . "\" WHERE name = \"" . $_COOKIE["username"] . "\"";
+					mysql_query($strSQL);
+					$strSQL = "UPDATE users SET country = \"" . $_POST["country"] . "\" WHERE name = \"" . $_COOKIE["username"] . "\"";
+					mysql_query($strSQL);
+					$strSQL = "UPDATE users SET languages = \"" . $_POST["languages"] . "\" WHERE name = \"" . $_COOKIE["username"] . "\"";
 					mysql_query($strSQL);
 					echo "<h4>Profile Updated</h4>";
 					header("refresh:2; url=useraccount.html");

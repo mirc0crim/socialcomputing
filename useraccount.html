@@ -18,26 +18,22 @@
 		<div class="right">
 			<?php
 				include('info.php');
-			
 				mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
 				mysql_select_db($dbName) or die(mysql_error());
-				$strSQL = "SELECT fname, lname FROM users WHERE name=\"" . $_COOKIE["username"] . "\"";
+				$strSQL = "SELECT * FROM users WHERE name=\"" . $_COOKIE["username"] . "\"";
 				$rs = mysql_query($strSQL);
 				$row = mysql_fetch_array($rs);
-				$fname = $row["fname"];
-				$lname = $row["lname"];
 				mysql_close();
-				echo "<h4>" . $fname . " " . $lname . "</h4>";
+				echo "<h4>" . $row["fname"] . " " . $row["lname"] . "</h4>";
 			?>
-			<p>Something about me maybe.</p>
+			<p><?php echo $row["aboutme"]; ?></p>
 			<h4>Country</h4>
-			<p>Switzerland</p>
+			<p><?php echo $row["country"]; ?></p>
 			<h4>Languages</h4>
-			<p>French, English</p>
-			
+			<p><?php echo $row["languages"]; ?></p>
 			<h4>User Statistics</h4>
-			<p>Jobs completed: 45</p>
-			<p>Average Rating: 4.81</p>
+			<p>Level: <?php echo $row["level"]; ?></p>
+			<p>Rating: <?php echo $row["rating"]; ?></p>
 			
 			<button onclick = "location.href= 'EditProfile.html' "> Edit </button> 
 			

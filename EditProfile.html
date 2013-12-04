@@ -12,14 +12,32 @@
 		<div class="left">
 		</div>
 		<div class="right">
+			<?php 
+				include('info.php');
+				mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
+				mysql_select_db($dbName) or die(mysql_error());
+				$strSQL = "SELECT * FROM users WHERE name=\"" . $_COOKIE["username"] . "\"";
+				$rs = mysql_query($strSQL);
+				$row = mysql_fetch_array($rs);
+				mysql_close();
+			?>
 			<h4>Set your Name</h4>
-			<form name="editProfile" action="redirector.html?action=editName" method="post">
+			<form name="editProfile" action="redirector.html?action=editProfile" method="post">
 				<table>
 				<tr>
-					<td>First Name:</td><td><input type="text" name="fname"></td>
+					<td>First Name:</td><td><input type="text" name="fname" <?php echo "value=\"" . $row["fname"] . "\""; ?> ></td>
 				</tr>
 				<tr>
-					<td>Last Name:</td><td><input type="text" name="lname"></td>
+					<td>Last Name:</td><td><input type="text" name="lname" <?php echo "value=\"" . $row["lname"] . "\""; ?> ></td>
+				</tr>
+				<tr>
+					<td>About:</td><td><input type="text" name="aboutme" <?php echo "value=\"" . $row["aboutme"] . "\""; ?> ></td>
+				</tr>
+				<tr>
+					<td>Country:</td><td><input type="text" name="country" <?php echo "value=\"" . $row["country"] . "\""; ?> ></td>
+				</tr>
+				<tr>
+					<td>Languages:</td><td><input type="text" name="languages" <?php echo "value=\"" . $row["languages"] . "\""; ?> ></td>
 				</tr>
 				<tr>
 					<td> </td><td><input type="submit" value="Submit"></td>

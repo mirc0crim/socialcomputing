@@ -15,7 +15,11 @@
 			<a href="/Rate.html"><p>Rate Recordings</p></a>
 			<a href="/Lessons.html"><p>Lessons</p></a>
 		</div>
-		<div class="right">
+		<div class="right" style="text-align:center; padding-top:20px;">
+			<?php
+				include 'db/dbconnect.php';
+				echo getLevelTitles(3);
+			?>
 		</div>
 		<?php 
 		include('footer.php') 

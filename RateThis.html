@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<title>Rate This</title>
+	</head>
+	<body>
+		<?php
+			$pageName = "Project Social Computing - Rate This";
+			include('header.php');
+		?>
+		<div class="left">
+			<h4>Quick Links</h4>
+			<a href="/TestAccent.html"><p>Test your Accent</p></a>
+			<a href="/Rate.html"><p>Rate Recordings</p></a>
+			<a href="/Lessons.html"><p>Lessons</p></a>
+		</div>
+		<div class="right">
+			<?php
+				include('info.php');
+				mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
+				mysql_select_db($dbName) or die(mysql_error());
+				$strSQL = "SELECT * FROM recordings WHERE path=\"" . $_GET["path"] . "\"";
+				$rs = mysql_query($strSQL);
+				$row = mysql_fetch_array($rs);
+				echo "<embed height=\"100\" width=\"400\" src=\"" . $row["path"] . "\">";
+			?>
+			<br />
+			<form name="rate" action="redirector.html?action=rate" method="post">
+				<table>
+				<tr>
+					<td>
+						Rating:
+					</td>
+					<td>
+						<select name="rating">
+						    <option value="" disabled="disabled" selected="selected">Rating</option>
+						    <option value="1">1</option>
+						    <option value="2">2</option>
+						    <option value="3">3</option>
+						    <option value="4">4</option>
+						    <option value="5">5</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Comment:
+					</td>
+					<td>
+						<input type="text" name="comment">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
+					</td>
+					<td>
+						<input type="text" name="path" value=<?php echo $_GET["path"] ?> style="visibility: hidden;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
+					</td>
+					<td>
+						<input type="submit" value="Submit">
+					</td>
+				</tr>
+				</table>
+			</form>
+		</div>
+<?php include('footer.php') ?>
+	</body>
+</html>
+

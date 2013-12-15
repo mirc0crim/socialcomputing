@@ -68,6 +68,13 @@
 					mysql_query($strSQL);
 					echo "<h4>Profile Updated</h4>";
 					header("refresh:2; url=useraccount.html");
+				} else if ($_GET["action"] == rate) {
+					$strSQL = "UPDATE recordings SET comment = \"" . $_POST["comment"] . "\" WHERE path = \"" . $_POST["path"] . "\"";
+					mysql_query($strSQL) or die(mysql_error());
+					$strSQL = "UPDATE recordings SET rating = \"" . $_POST["rating"] . "\" WHERE path = \"" . $_POST["path"] . "\"";
+					mysql_query($strSQL) or die(mysql_error());
+					echo "<h4>Rating added</h4>";
+					header("refresh:2; url=Rate.html");
 				}
 				
 				mysql_close();

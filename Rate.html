@@ -15,6 +15,40 @@
 			<a href="/Rate.html"><p>Rate Recordings</p></a>
 			<a href="/Lessons.html"><p>Lessons</p></a>
 		</div>
+		<div class="right">
+			<br />
+			<?php
+				include('info.php');
+				mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
+				mysql_select_db($dbName) or die(mysql_error());
+				$strSQL = "SELECT * FROM recordings WHERE owner<>\"" . $_COOKIE["username"] . "\" AND rating=0";
+				$rs = mysql_query($strSQL);
+				echo "<table border='1'>";
+				echo "<tr>";
+				echo "<th>Date</th>";
+				echo "<th>Time</th>";
+				echo "<th>Level</th>";
+				echo "<th>Title</th>";
+				while ($row = mysql_fetch_array($rs)){
+					echo "<tr>";
+					$recordDate = substr($row["name"], -18, 14);
+					$dateYear = substr($recordDate, 0, 4);
+					$dateMonth = substr($recordDate, 4, 2);
+					$dateDay = substr($recordDate, 6, 2);
+					$dateHour = substr($recordDate, 8, 2);
+					$dateMinute = substr($recordDate, 10, 2);
+					$dateSecond = substr($recordDate, 12, 2);
+					echo "<td>" . $dateDay . "." . $dateMonth . "." . $dateYear . "</td>";
+					echo "<td>" . $dateHour . ":" . $dateMinute . ":" . $dateSecond . "</td>";
+					echo "<td>" . substr($row["path"], 24, 1) . "</td>";
+					echo "<td><a href=\"/RateThis.html?path=" . $row["path"] . "\">";
+					echo str_replace("_", " ", substr($row["path"], 26, -18));
+					echo "</a></td>";
+					echo "</tr>";
+				}
+				echo "</table>";
+			?>
+		</div>
 <?php include('footer.php') ?>
 	</body>
 </html>

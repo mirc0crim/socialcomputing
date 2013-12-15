@@ -59,7 +59,7 @@ $title = $_GET["title"];
 				document.getElementById("uploading").style.visibility = 'visible';
 				Recorder.upload({
 					method : "POST",
-					url : "http://lala.bugs3.com/recording/recorder_server.php",
+					url : "http://mirc0crim.bugs3.com/recording/recorder_server.php",
 					audioParam : "audio",
 					params : {
 						"name" : filename,

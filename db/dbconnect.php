@@ -71,8 +71,8 @@
 		if (!mysqli_select_db($conn, $dbName)) {
  		 	die('Could not select database: '.mysqli_error($conn));
 		}
-		$sql = "INSERT INTO `recordings`(`name`, `path`) VALUES('".$new_name."','recording/".$path."')";
-		$result = mysqli_query($conn, $sql);	
+		$sql = "INSERT INTO recordings(name, path) VALUES('".$new_name."','recording/".$path."')";
+		$result = mysqli_query($conn, $sql);
 		mysqli_close($conn);
 	}
 					

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="../stylesheet.css"/>
+		<title>My Page</title>
+		<script type='text/javascript' src='../recorder.js'></script>
+		
+	</head>
+	<body>
+		<?php
+			$pageName = "Project Social Computing - Lessons";
+			include('../header.php');
+			include('../menu.php');
+		?>
+		<div class="right" style="text-align:center; padding-top:20px;">
+			<?php
+				include '../db/dbconnect.php';
+				echo getLevelTitles(1);
+			?>
+		</div>
+		<?php 
+		include('../footer.php') 
+		?>
+	</body>
+</html>
+

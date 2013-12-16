@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="../stylesheet.css"/>
+		<title>My Page</title>
+	</head>
+	<body>
+		<?php
+			$pageName = "Project Social Computing - Lessons";
+			include('../header.php');
+			include('../menu.php');
+		?>
+		<div class="right" style="text-align:center; padding-top:20px;">
+			<?php
+				include '../db/dbconnect.php';
+				echo getLevelTitles(3);
+			?>
+		</div>
+		<?php 
+		include('../footer.php') 
+		?>
+	</body>
+</html>
+
+

@@ -8,22 +8,23 @@
 		<?php
 			$pageName = "Project Social Computing - Rate This";
 			include('header.php');
+			include('menu.php');
 		?>
-		<div class="left">
-			<h4>Quick Links</h4>
-			<a href="/TestAccent.html"><p>Test your Accent</p></a>
-			<a href="/Rate.html"><p>Rate Recordings</p></a>
-			<a href="/Lessons.html"><p>Lessons</p></a>
-		</div>
 		<div class="right">
+			<div style="padding:30px;">
 			<?php
 				include('info.php');
-				mysql_connect("mysql.serversfree.com", $userName, $password) or die(mysql_error());
+				mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
 				mysql_select_db($dbName) or die(mysql_error());
-				$strSQL = "SELECT * FROM recordings WHERE path=\"" . $_GET["path"] . "\"";
+				$strSQL = "SELECT * FROM recordings WHERE path='" . $_GET["path"] . "'";
 				$rs = mysql_query($strSQL);
 				$row = mysql_fetch_array($rs);
-				echo "<embed height=\"100\" width=\"400\" src=\"" . $row["path"] . "\">";
+				if ($row["path"] == NULL){
+					echo "<div style='height:100%; text-align:center; padding-top:30px;'>No audio file with this name found in our database</div>";
+				}
+				else {
+					echo "<embed height=\"100\" width=\"400\" src=\"" . $row["path"] . "\">";
+				
 			?>
 			<br />
 			<form name="rate" action="redirector.html?action=rate" method="post">
@@ -69,8 +70,10 @@
 				</tr>
 				</table>
 			</form>
+			<? } ?>
 		</div>
-<?php include('footer.php') ?>
+		</div>
+<? include('footer.php') ?>
 	</body>
 </html>
 

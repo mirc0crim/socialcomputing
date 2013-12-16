@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<link type="text/css" rel="stylesheet" href="../stylesheet.css"/>
 		<title>My Page</title>
 	</head>
 	<body>
 		<?php
 			$pageName = "Project Social Computing - Lessons";
-			include('header.php');
+			include('../header.php');
+			include('../menu.php');
 		?>
-		<div class="left">
-			<h4>Quick Links</h4>
-			<a href="/TestAccent.html"><p>Test your Accent</p></a>
-			<a href="/Rate.html"><p>Rate Recordings</p></a>
-			<a href="/Lessons.html"><p>Lessons</p></a>
-		</div>
 		<div class="right">
 			<div class="levelbutton"><button type="button" onclick = "location.href='Level1.html'">Level 1</button></div>
 			<div class="levelbutton"><button type="button" onclick = "location.href='Level2.html'">Level 2</button></div>
 			<div class="levelbutton"><button type="button" onclick = "location.href='Level3.html'">Level 3</button></div> 
 		</div>
 		<?php 
-		include('footer.php') 
+		include('../footer.php') 
 		?>
 	</body>
 </html>

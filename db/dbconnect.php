@@ -2,7 +2,7 @@
 	
 	function getLevelStories($level) {
 		include('info.php');
-		$conn = mysqli_connect("mysql.serversfree.com", $userName, $password);
+		$conn = mysqli_connect("mysql.serversfree.com", $dbName, $password);
 		if(! $conn ) {
  		 die('Could not connect: '.mysqli_connect_error());
 		}
@@ -21,8 +21,8 @@
 	}
 	
 	function getLevelTitles($level) {
-		include('info.php');
-		$conn = mysqli_connect("mysql.serversfree.com", $userName, $password);
+		include('../info.php');
+		$conn = mysqli_connect("mysql.serversfree.com", $dbName, $password);
 		if(! $conn ) {
  		 die('Could not connect: '.mysqli_connect_error());
 		}
@@ -42,8 +42,8 @@
 	}
 	
 	function getLevelLesson($level, $title) {
-		include('info.php');
-		$conn = mysqli_connect("mysql.serversfree.com", $userName, $password);
+		include('../info.php');
+		$conn = mysqli_connect("mysql.serversfree.com", $dbName, $password);
 		if(! $conn ) {
  		 die('Could not connect: '.mysqli_connect_error());
 		}
@@ -63,7 +63,7 @@
 	
 	function saveRecordingToDB($new_name, $path) {
 		include('../info.php');
-		$conn = mysqli_connect("mysql.serversfree.com", $userName, $password);
+		$conn = mysqli_connect("mysql.serversfree.com", $dbName, $password);
 		if(! $conn ) {
  		 die('nCould not connect: '.mysqli_connect_error());
 		}

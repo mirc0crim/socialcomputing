@@ -8,16 +8,9 @@
 		<?php
 			$pageName = "Project Social Computing - Rate";
 			include('header.php');
+			include('menu.php');
 		?>
-		<div class="left">
-			<h4>Quick Links</h4>
-			<a href="/TestAccent.html"><p>Test your Accent</p></a>
-			<a href="/Rate.html"><p>Rate Recordings</p></a>
-			<a href="/Lessons.html"><p>Lessons</p></a>
-		</div>
 		<div class="right">
-			<br />
-			
 			<h4>Rate the recordings for a small payment!</h4>
 			<p>In order to maintain a steady supply of podcasts to our audience we encourage users to rate as many recordings as possible for a small payment! The payment comes from donations made to our website by charitable people. </p>
 				
@@ -29,7 +22,7 @@
 			<p>Below you have the option to rate some of the recordings for free.</p>
 			<?php
 				include('info.php');
-				mysql_connect("mysql.serversfree.com", $userName, $password) or die(mysql_error());
+				mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
 				mysql_select_db($dbName) or die(mysql_error());
 				$strSQL = "SELECT * FROM recordings WHERE owner<>\"" . $_COOKIE["username"] . "\" AND rating=0";
 				$rs = mysql_query($strSQL);

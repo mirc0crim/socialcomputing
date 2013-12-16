@@ -18,7 +18,7 @@
 		<div class="right">
 			<?php
 				include('info.php');
-				mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
+				mysql_connect("mysql.serversfree.com", $userName, $password) or die(mysql_error());
 				mysql_select_db($dbName) or die(mysql_error());
 				$strSQL = "SELECT * FROM recordings WHERE path=\"" . $_GET["path"] . "\"";
 				$rs = mysql_query($strSQL);

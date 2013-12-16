@@ -15,7 +15,7 @@
 			<?php
 					include('info.php');
 				
-					mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
+					mysql_connect("mysql.serversfree.com", $userName, $password) or die(mysql_error());
 					mysql_select_db($dbName) or die(mysql_error());
 					
 				if ($_GET["action"] == login){

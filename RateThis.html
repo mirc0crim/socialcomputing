@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<script type="text/javascript" src="js/ratingsys.js"></script> 
 		<title>Rate This</title>
 	</head>
 	<body>
@@ -23,33 +24,33 @@
 					echo "<div style='height:100%; text-align:center; padding-top:30px;'>No audio file with this name found in our database</div>";
 				}
 				else {
-					echo "<embed height=\"100\" width=\"400\" src=\"" . $row["path"] . "\">";
+					echo "<embed height=\"100\" width=\"525\" src=\"" . $row["path"] . "\" style='padding-left:101px;'>";
 				
 			?>
 			<br />
 			<form name="rate" action="redirector.html?action=rate" method="post">
 				<table>
 				<tr>
-					<td>
+					<td style="vertical-align:top;">
 						Rating:
 					</td>
 					<td>
-						<select name="rating">
-						    <option value="" disabled="disabled" selected="selected">Rating</option>
-						    <option value="1">1</option>
-						    <option value="2">2</option>
-						    <option value="3">3</option>
-						    <option value="4">4</option>
-						    <option value="5">5</option>
-						</select>
+						<div id="rateMe">
+    							<a onclick="rateIt(this)" id="_1" onmouseover="rating(this)" onmouseout="off(this)"></a>
+    							<a onclick="rateIt(this)" id="_2" onmouseover="rating(this)" onmouseout="off(this)"></a>
+    							<a onclick="rateIt(this)" id="_3" onmouseover="rating(this)" onmouseout="off(this)"></a>
+    							<a onclick="rateIt(this)" id="_4" onmouseover="rating(this)" onmouseout="off(this)"></a>
+    							<a onclick="rateIt(this)" id="_5" onmouseover="rating(this)" onmouseout="off(this)"></a>
+						</div>
+						<input type="text" id="rating" name="rating" style="visibility:hidden;">
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td style="vertical-align:top;">
 						Comment:
 					</td>
 					<td>
-						<input type="text" name="comment">
+						<textarea  rows="4" cols="50" name="comment"></textarea>
 					</td>
 				</tr>
 				<tr>

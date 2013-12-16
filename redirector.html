@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
@@ -15,7 +15,7 @@
 			<?php
 					include('info.php');
 				
-					mysql_connect("mysql.serversfree.com", $userName, $password) or die(mysql_error());
+					mysql_connect("mysql.serversfree.com", $dbName, $password) or die(mysql_error());
 					mysql_select_db($dbName) or die(mysql_error());
 					
 				if ($_GET["action"] == login){
@@ -71,7 +71,11 @@
 				} else if ($_GET["action"] == rate) {
 					$strSQL = "UPDATE recordings SET comment = \"" . $_POST["comment"] . "\" WHERE path = \"" . $_POST["path"] . "\"";
 					mysql_query($strSQL) or die(mysql_error());
-					$strSQL = "UPDATE recordings SET rating = \"" . $_POST["rating"] . "\" WHERE path = \"" . $_POST["path"] . "\"";
+					$strSQL = "SELECT rating FROM recordings WHERE path = \"" . $_POST["path"] . "\"";
+					$rs = mysql_query($strSQL);
+					$row = mysql_fetch_array($rs);
+					$score = $row["rating"]+$_POST["rating"];
+					$strSQL = "UPDATE recordings SET rating = \"" . $score . "\" WHERE path = \"" . $_POST["path"] . "\"";
 					mysql_query($strSQL) or die(mysql_error());
 					echo "<h4>Rating added</h4>";
 					header("refresh:2; url=Rate.html");

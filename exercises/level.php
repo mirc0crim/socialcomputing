@@ -2,8 +2,8 @@
 $level = $_GET["level"];
 $title = $_GET["title"];
 ?>
-<!DOCTYPE html><html><head><link type='text/css' rel='stylesheet' href='stylesheet.css'/><title>My Page</title></head><body>
-<script type="text/javascript" src="recording/recorder.js"></script>
+<!DOCTYPE html><html><head><link type='text/css' rel='stylesheet' href='../stylesheet.css'/><title>My Page</title></head><body>
+<script type="text/javascript" src="../recording/recorder.js"></script>
 <script>
 			function timecode(ms) {
 				var hms = {
@@ -26,7 +26,7 @@ $title = $_GET["title"];
 
 
 			Recorder.initialize({
-				swfSrc : "recording/recorder.swf"
+				swfSrc : "../recording/recorder.swf"
 			});
 
 			function record() {
@@ -77,11 +77,11 @@ $title = $_GET["title"];
 
 <?php
 $pageName = "Project Social Computing - Lessons";
-include ('header.php');
-echo "<div class='left'><h4>Quick Links</h4><a href='/TestAccent.html'><p>Test your Accent</p></a><a href='/Rate.html'><p>Rate Recordings</p></a><a href='/Lessons.html'><p>Lessons</p></a></div>";
+include ('../header.php');
+include ('../menu.php');
 
 echo "<div class='right' style='padding-top:20px;'>";
-include 'db/dbconnect.php';
+include '../db/dbconnect.php';
 
 echo getLevelLesson($level, str_replace("_", " ", $title)) . "<div class='backLink'><button type='button' onclick = 'location.href=&#39;Level" . $level . ".html&#39;'>Level " . $level . "</button></div>";
 ?>
@@ -109,6 +109,6 @@ echo getLevelLesson($level, str_replace("_", " ", $title)) . "<div class='backLi
 
 <?php
 echo "</div>";
-include ('footer.php');
+include ('../footer.php');
 echo "</body></html>";
 ?>

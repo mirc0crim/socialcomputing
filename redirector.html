@@ -69,13 +69,17 @@
 					echo "<h4>Profile Updated</h4>";
 					header("refresh:2; url=useraccount.html");
 				} else if ($_GET["action"] == rate) {
-					$strSQL = "UPDATE recordings SET comment = \"" . $_POST["comment"] . "\" WHERE path = \"" . $_POST["path"] . "\"";
-					mysql_query($strSQL) or die(mysql_error());
-					$strSQL = "SELECT rating FROM recordings WHERE path = \"" . $_POST["path"] . "\"";
+					$strSQL = "SELECT * FROM recordings WHERE path = \"" . $_POST["path"] . "\"";
 					$rs = mysql_query($strSQL);
 					$row = mysql_fetch_array($rs);
-					$score = $row["rating"]+$_POST["rating"];
+					$newComment = $row["comment"] . " " . $_POST["comment"];
+					$strSQL = "UPDATE recordings SET comment = \"" . $newComment . "\" WHERE path = \"" . $_POST["path"] . "\"";
+					mysql_query($strSQL) or die(mysql_error());
+					$newNum = $row["num"]+1;
+					$score = ($row["num"]*$row["rating"]+$_POST["rating"])/$newNum;
 					$strSQL = "UPDATE recordings SET rating = \"" . $score . "\" WHERE path = \"" . $_POST["path"] . "\"";
+					mysql_query($strSQL) or die(mysql_error());
+					$strSQL = "UPDATE recordings SET num = \"" . $newNum . "\" WHERE path = \"" . $_POST["path"] . "\"";
 					mysql_query($strSQL) or die(mysql_error());
 					echo "<h4>Rating added</h4>";
 					header("refresh:2; url=Rate.html");

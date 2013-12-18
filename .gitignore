@@ -2,3 +2,5 @@
 /.metadata
 info.php
 default.php
+*.db
+

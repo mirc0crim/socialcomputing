@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
-		<script type="text/javascript" src="js/ratingsys.js"></script> 
 		<title>Rate This</title>
 	</head>
 	<body>
@@ -28,6 +27,7 @@
 				
 			?>
 			<br />
+			<br />
 			<form name="rate" action="redirector.html?action=rate" method="post">
 				<table>
 				<tr>
@@ -35,14 +35,14 @@
 						Rating:
 					</td>
 					<td>
-						<div id="rateMe">
-    							<a onclick="rateIt(this)" id="_1" onmouseover="rating(this)" onmouseout="off(this)"></a>
-    							<a onclick="rateIt(this)" id="_2" onmouseover="rating(this)" onmouseout="off(this)"></a>
-    							<a onclick="rateIt(this)" id="_3" onmouseover="rating(this)" onmouseout="off(this)"></a>
-    							<a onclick="rateIt(this)" id="_4" onmouseover="rating(this)" onmouseout="off(this)"></a>
-    							<a onclick="rateIt(this)" id="_5" onmouseover="rating(this)" onmouseout="off(this)"></a>
+						<div class="rating" name="rating">
+						    <input type="radio" name="rating" value="0" checked /><span id="hide"></span>
+						    <input type="radio" name="rating" value="1" /><span></span>
+						    <input type="radio" name="rating" value="2" /><span></span>
+						    <input type="radio" name="rating" value="3" /><span></span>
+						    <input type="radio" name="rating" value="4" /><span></span>
+						    <input type="radio" name="rating" value="5" /><span></span>
 						</div>
-						<input type="text" id="rating" name="rating" style="visibility:hidden;">
 					</td>
 				</tr>
 				<tr>

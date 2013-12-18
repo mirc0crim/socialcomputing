@@ -81,14 +81,73 @@
 			include('../header.php'); 
 			include('../menu.php');
 		?>
-		<div class="right" style="height:450px;">
+		<div class="right" style="height:1000px;">
 			<div id="wrapper">
 			<h4> Test your Accent Now! </h4>
 		<p>Click on the record button to start the recording. Then click on the link provided to navigate to the page containing the text to be read. To pause, restart or submit the recording go to the open tab and push the relevant button. All the best!  </p>
-<iframe src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?format=300x250"
-frameborder="0" width="300" height="250"
-marginwidth="0" marginheight="0" align="middle">
-</iframe>
+		
+		<?php 
+		
+		$curl_handle=curl_init();
+		curl_setopt($curl_handle,CURLOPT_URL,'http://en.wikipedia.org/w/api.php?action=query&list=random&rnlimit=10');
+		curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, TRUE);
+		$buffer = curl_exec($curl_handle);
+		$buffer = preg_replace('#.*xml#s', '', $buffer);
+
+		$idonly = preg_replace('#.*id#', '', $buffer);
+		$idonly = preg_replace('#ns.*#', '', $idonly);
+
+		$titleonly = preg_replace('#.*title#', '', $buffer);
+		$titleonly = str_replace('1.0', '', $titleonly);
+		
+		$numOfMatches = preg_match_all('#[0-9]{6,}#', $idonly, $outNum, PREG_PATTERN_ORDER);
+		preg_match_all('#=.{6,} /#', $titleonly, $outTitle, PREG_PATTERN_ORDER);
+
+		$foundNum = 0;
+		for ($i = 0; $i < $numOfMatches-1; $i++) {
+			if (strpos(strtolower($outTitle[0][$i]), 'user') == FALSE
+			 and strpos(strtolower($outTitle[0][$i]), 'talk') == FALSE
+			 and strpos(strtolower($outTitle[0][$i]), 'category') == FALSE
+			 and strpos(strtolower($outTitle[0][$i]), 'file') == FALSE
+			 and strpos(strtolower($outTitle[0][$i]), 'portal') == FALSE
+			 and strpos(strtolower($outTitle[0][$i]), 'wikipedia') == FALSE
+			 and strpos(strtolower($outTitle[0][$i]), 'template') == FALSE){
+    			$foundNum = $outNum[0][$i];
+    			break;
+    		}
+		}
+		if ($foundNum == 0){
+			$foundNum = 39096469;
+		}
+		
+		$link = 'http://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=' . $foundNum . '&inprop=url';
+		curl_setopt($curl_handle,CURLOPT_URL, $link);
+		$buffer = curl_exec($curl_handle);
+		echo "<br />";
+		$buffer = preg_replace('#.*fullurl#s', '', $buffer);
+		$buffer = preg_replace('#editurl.*#s', '', $buffer);
+		$buffer = preg_replace('#.*href=#s', '', $buffer);
+		$buffer = preg_replace('#>.*#s', '', $buffer);
+		$buffer = substr($buffer, 1, -1);
+
+		$link = preg_replace('#.*wiki#s', '', $buffer);
+		$link = substr($link, 1);
+		$link = 'http://en.wikipedia.org/w/index.php?title=' . $link . '&printable=yes';
+		//echo $link;
+		
+		curl_setopt($curl_handle,CURLOPT_URL, $link);
+		$buffer = curl_exec($curl_handle);
+		$buffer = preg_replace('#.*<body#s', '', $buffer);
+		$buffer = '<body' . $buffer;
+		$buffer = preg_replace('#<table class="infobox.*?</table>#s', '', $buffer);
+		$buffer = preg_replace('#id..External_Links.*#s', '', $buffer);
+		$buffer = preg_replace('#<.*?>#s', '', $buffer);
+		$buffer = preg_replace('#</.*?>#s', '', $buffer);
+		$buffer = preg_replace('#From Wikipedia, the free encyclopedia#s', '', $buffer);
+		$buffer = preg_replace('#Create account.*#s', '', $buffer);
+		$buffer = preg_replace('#\[[0-9]{1,2}\]#s', '', $buffer);
+		$grabbedPage = $buffer;
+		?>
 			</p>
 			<div style="text-align:center;">				
 				<a href="javascript:record()" id="record" ><img src="../img/Record.gif"/></a>
@@ -100,6 +159,7 @@ marginwidth="0" marginheight="0" align="middle">
 			<div id="recording" style="visibility: hidden; text-align:center;">Recording ... </div>
 			<div id="uploading" style="visibility: hidden; text-align:center;">Uploading ... </div>
 			<div id="time" style="text-align:center;">0:00</div>
+			<?php print $grabbedPage; ?>
 		</div>
 		</div>
 		<?php include('../footer.php') ?>

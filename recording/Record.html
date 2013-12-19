@@ -116,9 +116,12 @@
     			break;
     		}
 		}
+		$array = array(39096469, 14315327, 13043031, 11282500, 1900351, 8539925, 1152909, 3149918, 25198304, 12138818);
 		if ($foundNum == 0){
 			$foundNum = 39096469;
 		}
+		$myrand = rand(0,9);
+		$foundNum = $array[$myrand];
 		
 		$link = 'http://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=' . $foundNum . '&inprop=url';
 		curl_setopt($curl_handle,CURLOPT_URL, $link);

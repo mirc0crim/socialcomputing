@@ -69,7 +69,7 @@
 					echo "<h4>Profile Updated</h4>";
 					header("refresh:2; url=useraccount.html");
 				} else if ($_GET["action"] == rate) {
-					echo "Volume answer: ".$_POST["volume"]."Pro answer: ".$_POST["pronounciation"];
+					//echo "Volume answer: ".$_POST["volume"]."Pro answer: ".$_POST["pronounciation"];
 					$strSQL = "SELECT * FROM recordings WHERE path = \"" . $_POST["path"] . "\"";
 					$rs = mysql_query($strSQL);
 					$row = mysql_fetch_array($rs);

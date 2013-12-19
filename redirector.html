@@ -69,9 +69,11 @@
 					echo "<h4>Profile Updated</h4>";
 					header("refresh:2; url=useraccount.html");
 				} else if ($_GET["action"] == rate) {
+					echo "Volume answer: ".$_POST["volume"]."Pro answer: ".$_POST["pronounciation"];
 					$strSQL = "SELECT * FROM recordings WHERE path = \"" . $_POST["path"] . "\"";
 					$rs = mysql_query($strSQL);
 					$row = mysql_fetch_array($rs);
+					$recName=$row['name'];
 					$newComment = $row["comment"] . " " . $_POST["comment"];
 					$strSQL = "UPDATE recordings SET comment = \"" . $newComment . "\" WHERE path = \"" . $_POST["path"] . "\"";
 					mysql_query($strSQL) or die(mysql_error());
@@ -81,6 +83,11 @@
 					mysql_query($strSQL) or die(mysql_error());
 					$strSQL = "UPDATE recordings SET num = \"" . $newNum . "\" WHERE path = \"" . $_POST["path"] . "\"";
 					mysql_query($strSQL) or die(mysql_error());
+					
+					
+					$strSQL = "INSERT INTO votes(`recording`, `volume`, `pronounciation`, `comments`) VALUES ('".$recName."','".$_POST['volume']."','".$_POST['pronounciation']."', '".$_POST['comment']."')";
+					mysql_query($strSQL) or die(mysql_error());
+					
 					echo "<h4>Rating added</h4>";
 					header("refresh:2; url=Rate.html");
 				}
